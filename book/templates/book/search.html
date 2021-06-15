@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{%extends 'book/base.html'%}
+
+{%block body_block%}
+
+<form action="" method="get">
+
+    <div class="container">
+        <h1 class="mb-4" style="font-family: 'Poppins', sans-serif;font-size:30px">Search books here...!!
+        </h1>
+
+        <table class="table">
+
+            {{filter.form.as_table}}
+
+        </table>
+        <div class="mt-4 mb-5 text-center">
+            <input type="submit" class="btn btn-outline-success btn-sm" value="search">
+        </div>
+
+    </div>
+
+</form>
+
+<div class="container">
+
+    <table class="table">
+        <tr>
+            <th>Book</th>
+        </tr>
+        {% for book in filter.qs%}
+        <tr>
+            <td>{{book.book_name}}</td>
+            <td><a href="{% url 'view' book.id%}" class="btn btn-warning btn-sm">view</a></td>
+        </tr>
+        {% endfor %}
+
+    </table>
+    <div class="text-center">
+    <a href="{% url 'viewall' %}" class="btn btn-success btn-sm">all books</a>
+        <a href="{% url 'bookcreate' %}" class="btn btn-success btn-sm">add books</a>
+        <a href="{% url 'author' %}" class="btn btn-success  btn-sm">add authors</a>
+</div>
+
+</div>
+
+{% endblock %}

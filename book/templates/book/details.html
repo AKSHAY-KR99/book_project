@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+{%extends 'book/base.html'%}
+
+{%block body_block%}
+
+<div class="container">
+    <h3>Details</h3>
+
+    <form action="" method="post">
+
+        <table class="table">
+
+            <tr>
+                <th>Book</th>
+                <th>Author</th>
+                <th>Available copies</th>
+                <th>Price</th>
+
+            </tr>
+            <tr>
+                <td>{{book.book_name}}</td>
+                <td>{{book.author}}</td>
+                <td>{{book.available_cpy}}</td>
+                <td>{{book.price}}</td>
+
+
+            </tr>
+
+        </table>
+        <div class="text-center">
+            <a href="{% url 'book' book.id %}" class="btn btn-outline-success btn-sm px-5"> book</a>
+        </div>
+
+
+    </form>
+
+</div>
+
+{% endblock %}

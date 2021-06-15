@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+{%extends 'book/base.html'%}
+
+{%block body_block%}
+
+<form action="" method="post">
+    {% csrf_token %}
+
+    <div class="container">
+        <h4 style="font-family: 'Poppins', sans-serif;font-size:30px" class="mt-4 mb-5 ">Add Authors here..!!
+        </h4>
+
+        <table class="table">
+            <tr>
+                {{form.as_table}}
+            </tr>
+        </table>
+        <div class="text-center">
+            <input type="submit" value="  Add  " class="btn btn-outline-success btn-sm px-5">
+        </div>
+    </div>
+    <div class="container mt-5">
+
+        <div>
+            <table class="table">
+                {% for book in books%}
+                <tr>
+                    <td>{{book.author_name}}</td>
+                    <td><a href="{% url 'authoredit' book.id %}" class="btn btn-warning btn-sm">edit</a></td>
+                    <td><a href="{% url 'authoredit' book.id %}" class="btn btn-warning btn-sm">edit</a></td>
+                </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+
+    </div>
+
+
+</form>
+
+{% endblock %}
